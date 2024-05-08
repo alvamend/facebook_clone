@@ -1,6 +1,7 @@
 module Api
     module V1
         class PostsController < ApplicationController
+            rescue_from ActiveRecord::RecordNotFound, with: :not_found_records
             before_action :current_user
 
             def create
@@ -11,11 +12,15 @@ module Api
             def show
                 post = Post.find_by!(id:params[:id])
                 render json: {post: post}, status: 200
-            rescue ActiveRecord::RecordNotFound => e
-                render json: {message: "could not find post"}, status: :not_found
             end
 
             def update
+                post = PostService.update_post(params, @current_user)
+                if !post 
+                    render json: {message: "you cannot modify this post or there was an error"}, status: :unprocessable_entity
+                else
+                    render json: {message: "post modified correctly"}, status: 200
+                end
             end
 
             def destroy
@@ -30,6 +35,10 @@ module Api
             private
             def post_params
                 params.permit(:description, :privacy, :images)
+            end
+
+            def not_found_records(e)
+                render json: {message: "could not find post"}, status: :not_found
             end
         end
     end
