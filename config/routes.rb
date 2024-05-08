@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       # Post routes
       resources :posts
 
+      # Like routes
+      get "like/:id", to: "likes#toggle_like"
+
       # Auth routes
       post "/auth/login", to: "auth#create"
       delete "/auth/logout", to: "auth#destroy"
