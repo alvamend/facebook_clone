@@ -11,7 +11,7 @@ class AuthService
             payload = {
                 id: user.id,
                 email: user.email,
-                exp: 30.seconds.from_now.to_i
+                exp: 30.minutes.from_now.to_i
             }
 
             # Generate token 
@@ -25,6 +25,7 @@ class AuthService
     end
 
     def self.get_current_user(token)
-        valid_token = JWT.decode token, ENV["SECRET_KEY"], true, {algorithm: ENV["ALGORITHM"]}
+        decoded = JWT.decode token, ENV["SECRET_KEY"], true, {algorithm: ENV["ALGORITHM"]}
+        user = User.find_by(id:decoded[0]["id"])
     end
 end
