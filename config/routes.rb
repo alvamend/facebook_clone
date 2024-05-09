@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       # Like routes
       get "like/:id", to: "likes#toggle_like"
 
+      # Comment routes
+      resources :comments
+
       # Auth routes
       post "/auth/login", to: "auth#create"
       delete "/auth/logout", to: "auth#destroy"
