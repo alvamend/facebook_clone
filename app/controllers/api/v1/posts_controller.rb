@@ -11,7 +11,11 @@ module Api
 
             def show
                 post = Post.find_by!(id:params[:id])
-                render json: {post: post}, status: 200
+                render json: {
+                    post: post, 
+                    user: "#{post.user.first_name} #{post.user.last_name}",
+                    likes: post.likes.length
+                }, status: 200
             end
 
             def update
