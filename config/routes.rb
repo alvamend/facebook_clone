@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Added signup route to create new users
       post "/signup", to: "users#create"
+      post "/avatar", to: "users#change_avatar"
+      resources :users, only: [:show, :update]
 
       # Post routes
       resources :posts
