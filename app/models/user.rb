@@ -16,4 +16,5 @@ class User < ApplicationRecord
     has_one_attached :avatar
     has_many :likes
     has_many :posts
+    has_many :friendrequests
 end

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       # Auth routes
       post "/auth/login", to: "auth#create"
       delete "/auth/logout", to: "auth#destroy"
+
+      # Friend request routes
+      post "/add-friend/:user_id", to: "friend_requests#create"
     end
   end
 end
