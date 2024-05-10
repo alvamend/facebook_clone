@@ -10,10 +10,11 @@ Rails.application.routes.draw do
       resources :posts
 
       # Like routes
-      get "like/:id", to: "likes#toggle_like"
+      get "/like/:id", to: "likes#toggle_like"
 
       # Comment routes
-      resources :comments
+      post "/comments/:post_id", to: "comments#create"
+      resources :comments, except: :create
 
       # Auth routes
       post "/auth/login", to: "auth#create"
