@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       # Added signup route to create new users
       post "/signup", to: "users#create"
       post "/avatar", to: "users#change_avatar"
-      resources :users, only: [:show, :update]
+      resources :users, only: %i[show update]
 
       # Post routes
       resources :posts
@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       delete "/auth/logout", to: "auth#destroy"
 
       # Friend request routes
+      resources :friend_requests, only: %i[index]
       post "/add-friend/:user_id", to: "friend_requests#create"
+      get "/accept/:req_id", to: "friend_requests#accept_request"
     end
   end
 end
