@@ -19,7 +19,11 @@ module Api
 
             def accept_request
                 request = FriendshipService.accept(params[:req_id], @current_user)
-                puts request
+                if !request[:result]
+                    render json: {message: request[:message]}, status: :unprocessable_entity
+                else
+                    render json: {message: request[:message]}, status: 200
+                end
             rescue ActiveRecord::RecordNotFound => e
                 render json: {error: "friend request not found"}, status: :not_found
             end
