@@ -16,6 +16,7 @@ class User < ApplicationRecord
     has_one_attached :avatar
     has_many :likes
     has_many :posts
+    has_many :comments
     has_many :friendrequests
     has_many :friendships
     has_many :friends, through: :friendships, foreign_key: 'user_id'
