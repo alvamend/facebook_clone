@@ -1,24 +1,9 @@
-# README
+<h1>Facebook Clone API</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p>
+This project involves building an API using Ruby on Rails for a basic clone of the Facebook social media platform. The API will provide endpoints for functionalities such as user profile management, content posting, friend interaction, and more. The main goal is to explore the development of a basic social application using Rails and to provide a solid foundation for future expansions and enhancements.</p>
 
-Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.3.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<a href="https://www.postman.com/alvaromendozamain/workspace/facebook-clone">Postman API</a>
